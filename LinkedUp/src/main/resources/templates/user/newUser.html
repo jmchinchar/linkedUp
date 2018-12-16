@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8" />
+    <title>Welcome to LinkedUp</title>
+</head>
+<body>
+    <h1>Create Your Profile</h1>
+    <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
+    <table>
+	<tr>
+            <td>First Name</td>
+	    <td><input type="text" th:field="*{firstName}" /></td>
+	</tr>
+	<tr>
+            <td>Last Name</td>
+	    <td><input type="text" th:field="*{lastName}" /></td>
+	</tr>
+	<tr>
+            <td>Current Job</td>
+	    <td><input type="text" th:field="*{currentJob}" /></td>
+	</tr>
+	<tr>
+    	    <td>Interests:</td>
+	    <td><input type="text" th:field="*{interests}" /></td>
+	</tr>
+	<tr>
+            <td>Github Link</td>
+	    <td><input type="text" th:field="*{github}" /></td>
+	</tr>
+	<tr>
+            <td>Work History</td>
+	    <td><input type="text" th:field="*{workHistory}" /></td>
+	</tr>
+	<tr>
+            <td>Skills</td>
+	    <td><input type="text" th:field="*{skills}" /></td>
+	</tr>
+	<tr>
+	    <td><button type="submit">Submit</button></td>
+	</tr>
+    </table>
+</form>
+    
+</body>
+</html>
