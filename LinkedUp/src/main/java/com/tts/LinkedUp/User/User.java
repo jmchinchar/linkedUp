@@ -1,12 +1,20 @@
 package com.tts.LinkedUp.User;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.data.jpa.domain.AbstractPersistable;
+import com.tts.LinkedUp.Post.Post;
 
 @Entity
-public class User {
+public class User extends AbstractPersistable<Long> {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -17,6 +25,10 @@ public class User {
 	private String github;
 	private String workHistory;
 	private String skills;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+    private Set<Post> posts;
+ 
 	
 	public User() {
 		//Needed for JPA
@@ -82,6 +94,16 @@ public class User {
 	public void setSkills(String skills) {
 		this.skills = skills;
 	}
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+ 
 
 	@Override
 	public String toString() {
